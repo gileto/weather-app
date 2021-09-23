@@ -1,5 +1,7 @@
 # weather
 
+!!DEPLOY!! https://gileto-weather.surge.sh/
+
 ## Build Setup
 
 ```bash
