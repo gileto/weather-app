@@ -1,6 +1,6 @@
-# weather
+# Deploy
 
-!!DEPLOY!! https://gileto-weather.surge.sh/
+https://gileto-weather.surge.sh/
 
 ## Build Setup
 
