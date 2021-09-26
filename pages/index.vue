@@ -17,27 +17,30 @@
           class="table-img"
         />
         <div class="table-info">
+          <h3 class="city">
+            {{ cityName }}
+          </h3>
           <div>
             It's <b> {{ weather.weather[0].main.toLowerCase() }} </b> there now
           </div>
           <div>
-            <b>Temparature: </b>{{ Math.floor(weather.main.temp - 273.15) }} ℃
+            <b>Temparature: </b>{{ Math.floor(weather.main.temp - 273.15) }}℃
           </div>
           <div>
             <b> Feels like: </b
-            >{{ Math.floor(weather.main.feels_like - 273.15) }} ℃
+            >{{ Math.floor(weather.main.feels_like - 273.15) }}℃
           </div>
           <div>
             <b>Max temperature: </b
-            >{{ Math.floor(weather.main.temp_max - 273.15) }} ℃
+            >{{ Math.floor(weather.main.temp_max - 273.15) }}℃
           </div>
           <div>
             <b> Min temperature: </b
-            >{{ Math.floor(weather.main.temp_min - 273.15) }} ℃
+            >{{ Math.floor(weather.main.temp_min - 273.15) }}℃
           </div>
-          <div><b>Pressure: </b>{{ weather.main.pressure }}</div>
-          <div><b>Humidity: </b>{{ weather.main.humidity }}</div>
-          <div><b>Wind speed: </b>{{ weather.wind.speed }} m/s</div>
+          <div><b>Pressure: </b>{{ weather.main.pressure }}mm Hg</div>
+          <div><b>Humidity: </b>{{ weather.main.humidity }}%</div>
+          <div><b>Wind speed: </b>{{ weather.wind.speed }}m/s</div>
         </div>
       </div>
       <div v-else class="oops">
@@ -60,6 +63,7 @@ export default {
       message: '',
       img: 'alright.svg',
       randomNum: 1,
+      cityName: '',
     }
   },
   methods: {
@@ -72,7 +76,7 @@ export default {
             }&appid=e4ba5ced4a81e70d0a851982e61f5944`
           )
 
-          if (call.status > 200) {
+          if (call.status >= 300) {
             this.message = 'oh no! it seems like your city does not exist..'
             this.img = 'sorry.svg'
             this.pendingState = false
@@ -81,6 +85,8 @@ export default {
             this.weather = data
             this.pendingState = true
             this.randomNum = Math.trunc(Math.random() * 5 + 1)
+            this.cityName = this.city[0].toUpperCase() + this.city.slice(1)
+            this.city = ''
           }
         } catch (e) {
           console.log(e)
@@ -96,6 +102,10 @@ export default {
   max-width: 70%;
   margin: 0 auto;
   font-family: 'Arial', sans-serif;
+}
+
+.city {
+  margin-bottom: 1rem;
 }
 
 .btn {
@@ -125,6 +135,7 @@ export default {
   display: flex;
   flex-direction: column;
   font-size: 20px;
+  align-items: center;
 }
 .table-info {
   width: 60%;
