@@ -24,7 +24,7 @@
             It's <b> {{ weather.weather[0].main.toLowerCase() }} </b> there now
           </div>
           <div>
-            <b>Temparature: </b>{{ Math.floor(weather.main.temp - 273.15) }}℃
+            <b>Temperature: </b>{{ Math.floor(weather.main.temp - 273.15) }}℃
           </div>
           <div>
             <b> Feels like: </b
@@ -38,7 +38,7 @@
             <b> Min temperature: </b
             >{{ Math.floor(weather.main.temp_min - 273.15) }}℃
           </div>
-          <div><b>Pressure: </b>{{ weather.main.pressure }}mm Hg</div>
+          <div><b>Pressure: </b>{{ weather.main.pressure }} mm Hg</div>
           <div><b>Humidity: </b>{{ weather.main.humidity }}%</div>
           <div><b>Wind speed: </b>{{ weather.wind.speed }}m/s</div>
         </div>
