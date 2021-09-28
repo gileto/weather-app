@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-container class="container">
+    <v-container class="container" v-cloak>
       <h1 class="title">Weather Service</h1>
       <h4 class="subtitle">just enter the city</h4>
       <form class="d-flex" @submit.prevent="getWeather">
@@ -165,6 +165,10 @@ footer {
   .table-info {
     font-size: 16px;
     line-height: 20px;
+  }
+
+  [v-cloak] {
+    display: none;
   }
 }
 </style>
